@@ -1,25 +1,22 @@
 #include <ctime>
 #include <fstream>
 #include <iostream>
-#include <memory>
 
 #include "camera.h"
-#include "color_util.h"
-#include "dielectric.h"
 #include "hittable.h"
 #include "hittable_list.h"
-#include "lambertian.h"
-#include "math_util.h"
-#include "metal.h"
 #include "ray.h"
+#include "scene_builder.h"
 #include "sphere.h"
 #include "vec3.h"
+#include "util/color.h"
+#include "util/math.h"
 
-const double infinity = std::numeric_limits<double>::infinity();
-const auto aspect_ratio = 16.0 / 9.0;
-const int image_width = 400;
+// TODO: Make these non-const. Move to a configuration file and/or struct.
+const auto aspect_ratio = 3.0 / 2.0;
+const int image_width = 1200;
 const int image_height = static_cast<int>(image_width / aspect_ratio);
-const int samples_per_pixel = 100;
+const int samples_per_pixel = 500;
 const int max_depth = 50;
 
 double hit_sphere(const point3& center, double radius, const ray& r) {
@@ -44,10 +41,10 @@ color ray_color(const ray& r, const hittable& world, int depth) {
     return color(0, 0, 0);
   }
 
-  if (world.hit(r, 0.001, infinity, rec)) {
+  if (world.hit(r, MIN_T, MAX_T, rec)) {
     ray scattered;
     color attenuation;
-    if (rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
+    if (rec.mat_ptr->Scatter(r, rec, attenuation, scattered)) {
       return attenuation * ray_color(scattered, world, depth - 1);
     }
     return color(0, 0, 0);
@@ -66,36 +63,26 @@ int main() {
 
   srand((unsigned int)time(0));
 
-  // World
+  // The scene
 
-  hittable_list world;
-
-  auto material_ground = std::make_shared<lambertian>(color(0.8, 0.8, 0.0));
-  auto material_center = std::make_shared<lambertian>(color(0.1, 0.2, 0.5));
-  auto material_left = std::make_shared<dielectric>(1.5);
-  auto material_right = std::make_shared<metal>(color(0.8, 0.6, 0.2), 0.0);
-
-  world.add(std::make_shared<sphere>(point3(0.0, -100.5, -1.0), 100.0, material_ground));
-  world.add(std::make_shared<sphere>(point3(0.0, 0.0, -1.0), 0.5, material_center));
-  world.add(std::make_shared<sphere>(point3(-1.0, 0.0, -1.0), 0.5, material_left));
-  world.add(std::make_shared<sphere>(point3(-1.0, 0.0, -1.0), -0.45, material_left));
-  world.add(std::make_shared<sphere>(point3(1.0, 0.0, -1.0), 0.5, material_right));
-
+  hittable_list scene;
+  SceneBuilder::RTOWBookCover(scene);
 
   // Camera
+  // TODO: Move to a configuration file and/or struct.
 
-  point3 lookfrom(3, 3, 2);
-  point3 lookat(0, 0, -1);
+  point3 lookfrom(13, 2, 3);
+  point3 lookat(0, 0, 0);
   vec3 vup(0, 1, 0);
-  auto dist_to_focus = (lookfrom - lookat).length();
-  auto aperture = 2.0;
+  auto dist_to_focus = 10.0;
+  auto aperture = 0.1;
 
   camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
 
   // File
 
   std::ofstream image_file;
-  image_file.open("image.ppm", std::ios::out);
+  image_file.open("images/image.ppm", std::ios::out);
   if (!image_file.is_open()) {
     std::cerr << "Unable to open file image.ppm for writing" << std::endl;
     return EXIT_FAILURE;
@@ -109,12 +96,12 @@ int main() {
     for (int i = 0; i < image_width; ++i) {
       color pixel_color(0, 0, 0);
       for (int s = 0; s < samples_per_pixel; ++s) {
-        auto u = (i + random_double()) / (image_width - 1);
-        auto v = (j + random_double()) / (image_height - 1);
+        auto u = (i + RandomDouble()) / (image_width - 1);
+        auto v = (j + RandomDouble()) / (image_height - 1);
         ray r = cam.get_ray(u, v);
-        pixel_color += ray_color(r, world, max_depth);
+        pixel_color += ray_color(r, scene, max_depth);
       }
-      write_color(image_file, pixel_color, samples_per_pixel);
+      WriteColorToStream(image_file, pixel_color, samples_per_pixel);
     }
   }
 
