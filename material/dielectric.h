@@ -44,8 +44,10 @@ public:
   }
 
 private:
-  // Use Schlick's approximation for reflectance (e.g., glass has reflectivity that varies with the viewing angle).
-  // See Schlick's approximation: https://en.wikipedia.org/wiki/Schlick%27s_approximation
+  /**
+   * Use Schlick's approximation for reflectance (e.g., glass has reflectivity that varies with the viewing angle).
+   * See Schlick's approximation: https://en.wikipedia.org/wiki/Schlick%27s_approximation
+   */
   static double Reflectance(double cosine, double reflection_coefficient) {
     auto r0 = (1.0 - reflection_coefficient) / (1.0 + reflection_coefficient);
     r0 = r0 * r0;

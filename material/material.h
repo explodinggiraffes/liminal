@@ -10,8 +10,11 @@ struct hit_record;
  *-----------------------------------------------------------------------------------------------------------------*/
 class Material {
 public:
-  // Scatter a ray of light that hits a material's surface.
-  // Return true if a ray should be used as part of lighting calculations, false if not.
+  /**
+   * Scatter a ray of light that hits a material's surface.
+   *
+   * \return true if a ray should be used as part of lighting calculations, false if not.
+   */
   virtual bool Scatter(
     const ray& r_in,
     const hit_record& rec,
