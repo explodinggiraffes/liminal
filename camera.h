@@ -1,8 +1,8 @@
 #pragma once
 
-#include "math_util.h"
 #include "ray.h"
 #include "vec3.h"
+#include "util/math.h"
 
 class camera {
 public:
@@ -15,7 +15,7 @@ public:
     double aperture,
     double focus_dist
   ) {
-    auto theta = degrees_to_radians(vfov);
+    auto theta = DegreesToRadians(vfov);
     auto h = tan(theta / 2);
     auto viewport_height = 2.0 * h;
     auto viewport_width = aspect_ratio * viewport_height;

@@ -3,7 +3,7 @@
 #include <cmath>
 #include <iostream>
 
-#include "math_util.h"
+#include "util/math.h"
 
 class vec3 {
 public:
@@ -45,11 +45,11 @@ public:
   }
 
   inline static vec3 random() {
-    return vec3(random_double(), random_double(), random_double());
+    return vec3(RandomDouble(), RandomDouble(), RandomDouble());
   }
 
   inline static vec3 random(double min, double max) {
-    return vec3(random_double(min, max), random_double(min, max), random_double(min, max));
+    return vec3(RandomDouble(min, max), RandomDouble(min, max), RandomDouble(min, max));
   }
 
   // Return true if the vector is close to zero in all dimensions.
@@ -131,7 +131,7 @@ vec3 random_in_unit_sphere() {
 
 vec3 random_in_unit_disk() {
   while (true) {
-    auto p = vec3(random_double(-1.0, 1.0), random_double(-1.0, 1.0), 0.0);
+    auto p = vec3(RandomDouble(-1.0, 1.0), RandomDouble(-1.0, 1.0), 0.0);
     if (p.length_squared() >= 1) continue;
     return p;
   }

@@ -2,11 +2,11 @@
 
 #include <memory>
 
-#include "material.h"
 #include "ray.h"
+#include "material/material.h"
 
 struct hit_record {
-  std::shared_ptr<material> mat_ptr;
+  std::shared_ptr<Material> mat_ptr;
   point3 p;
   vec3 normal;
   double t = 0.0;
