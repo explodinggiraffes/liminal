@@ -70,6 +70,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -133,14 +136,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
-    <ClInclude Include="color_util.h" />
-    <ClInclude Include="dielectric.h" />
+    <ClInclude Include="scene_builder.h" />
+    <ClInclude Include="util\color.h" />
+    <ClInclude Include="material\dielectric.h" />
     <ClInclude Include="hittable.h" />
     <ClInclude Include="hittable_list.h" />
-    <ClInclude Include="lambertian.h" />
-    <ClInclude Include="material.h" />
-    <ClInclude Include="math_util.h" />
-    <ClInclude Include="metal.h" />
+    <ClInclude Include="material\lambertian.h" />
+    <ClInclude Include="material\material.h" />
+    <ClInclude Include="util\math.h" />
+    <ClInclude Include="material\metal.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="sphere.h" />
     <ClInclude Include="vec3.h" />

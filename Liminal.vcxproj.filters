@@ -23,7 +23,7 @@
     <ClInclude Include="vec3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="color_util.h">
+    <ClInclude Include="util\color.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ray.h">
@@ -38,22 +38,25 @@
     <ClInclude Include="hittable_list.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="math_util.h">
+    <ClInclude Include="util\math.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="material.h">
+    <ClInclude Include="material\material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="lambertian.h">
+    <ClInclude Include="material\lambertian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="metal.h">
+    <ClInclude Include="material\metal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dielectric.h">
+    <ClInclude Include="material\dielectric.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_builder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
