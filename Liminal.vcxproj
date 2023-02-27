@@ -138,13 +138,13 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="scene_builder.h" />
     <ClInclude Include="util\color.h" />
-    <ClInclude Include="material\dielectric.h" />
+    <ClInclude Include="materials\dielectric.h" />
     <ClInclude Include="hittable.h" />
     <ClInclude Include="hittable_list.h" />
-    <ClInclude Include="material\lambertian.h" />
-    <ClInclude Include="material\material.h" />
+    <ClInclude Include="materials\lambertian.h" />
+    <ClInclude Include="materials\material.h" />
     <ClInclude Include="util\math.h" />
-    <ClInclude Include="material\metal.h" />
+    <ClInclude Include="materials\metal.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="sphere.h" />
     <ClInclude Include="vec3.h" />

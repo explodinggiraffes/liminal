@@ -3,7 +3,7 @@
 #include <memory>
 
 #include "ray.h"
-#include "material/material.h"
+#include "materials/material.h"
 
 struct hit_record {
   std::shared_ptr<Material> mat_ptr;

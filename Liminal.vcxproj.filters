@@ -44,16 +44,16 @@
     <ClInclude Include="camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="material\material.h">
+    <ClInclude Include="materials\material.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="material\lambertian.h">
+    <ClInclude Include="materials\lambertian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="material\metal.h">
+    <ClInclude Include="materials\metal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="material\dielectric.h">
+    <ClInclude Include="materials\dielectric.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="scene_builder.h">

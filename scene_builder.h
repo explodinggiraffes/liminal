@@ -4,9 +4,9 @@
 
 #include "hittable_list.h"
 #include "sphere.h"
-#include "material/dielectric.h"
-#include "material/lambertian.h"
-#include "material/metal.h"
+#include "materials/dielectric.h"
+#include "materials/lambertian.h"
+#include "materials/metal.h"
 
 /* ------------------------------------------------------------------------------------------------------------------
  * Populates a scene with spheres made from different materials.
@@ -37,8 +37,10 @@ public:
     auto ground_material = std::make_shared<Lambertian>(color(0.5, 0.5, 0.5));
     out_scene.add(std::make_shared<sphere>(point3(0, -1000, 0), 1000, ground_material));
 
-    for (int start_x_index = -11; start_x_index < 11; ++start_x_index) {
-      for (int start_y_index = -11; start_y_index < 11; ++start_y_index) {
+    //for (int start_x_index = -11; start_x_index < 11; ++start_x_index) {
+    for (int start_x_index = -5; start_x_index < 5; ++start_x_index) {
+      //for (int start_y_index = -11; start_y_index < 11; ++start_y_index) {
+      for (int start_y_index = -5; start_y_index < 5; ++start_y_index) {
         auto random_material = RandomDouble();
         point3 center(start_x_index + 0.9 * RandomDouble(), 0.2, start_y_index + 0.9 * RandomDouble());
 
