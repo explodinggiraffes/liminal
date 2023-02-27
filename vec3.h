@@ -8,6 +8,7 @@
 class Vec3 final {
 public:
   Vec3() : component{0.0, 0.0, 0.0} { }
+
   Vec3(double e0, double e1, double e2) : component{e0, e1, e2} { }
 
   double x() const { return component[0]; }
