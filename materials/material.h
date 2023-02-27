@@ -18,7 +18,7 @@ public:
   virtual bool Scatter(
     const ray& r_in,
     const hit_record& rec,
-    color& out_ray_attenuation,
+    Color& out_ray_attenuation,
     ray& out_scattered_ray) const = 0;
 
   virtual ~Material() { }

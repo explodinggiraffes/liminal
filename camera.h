@@ -7,9 +7,9 @@
 class camera {
 public:
   camera(
-    point3 lookfrom,
-    point3 lookat,
-    vec3   vup,
+    Point3 lookfrom,
+    Point3 lookat,
+    Vec3   vup,
     double vfov, // vertical field-of-view in degrees
     double aspect_ratio,
     double aperture,
@@ -20,9 +20,9 @@ public:
     auto viewport_height = 2.0 * h;
     auto viewport_width = aspect_ratio * viewport_height;
 
-    w = unit_vector(lookfrom - lookat);
-    u = unit_vector(cross(vup, w));
-    v = cross(w, u);
+    w = make_vec3::UnitVector(lookfrom - lookat);
+    u = make_vec3::UnitVector(CrossProduct(vup, w));
+    v = CrossProduct(w, u);
 
     origin = lookfrom;
     horizontal = focus_dist * viewport_width * u;
@@ -34,8 +34,8 @@ public:
 
 
   ray get_ray(double s, double t) const {
-    vec3 rd = lens_radius * random_in_unit_disk();
-    vec3 offset = u * rd.x() + v * rd.y();
+    Vec3 rd = lens_radius * make_vec3::RandomInUnitDisk();
+    Vec3 offset = u * rd.x() + v * rd.y();
 
     return ray(
       origin + offset,
@@ -44,10 +44,10 @@ public:
   }
 
 private:
-  point3 origin;
-  point3 lower_left_corner;
-  vec3 horizontal;
-  vec3 vertical;
-  vec3 u, v, w;
+  Point3 origin;
+  Point3 lower_left_corner;
+  Vec3 horizontal;
+  Vec3 vertical;
+  Vec3 u, v, w;
   double lens_radius;
 };

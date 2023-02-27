@@ -21,24 +21,24 @@ public:
   bool Scatter(
       const ray& r_in,
       const hit_record& rec,
-      color& out_ray_attenuation,
+      Color& out_ray_attenuation,
       ray& out_scattered_ray) const override {
-    vec3 unit_direction = unit_vector(r_in.direction());
-    double cos_theta = std::fmin(dot(-unit_direction, rec.normal), 1.0);
+    Vec3 unit_direction = make_vec3::UnitVector(r_in.direction());
+    double cos_theta = std::fmin(DotProduct(-unit_direction, rec.normal), 1.0);
     double sin_theta = std::sqrt(1.0 - cos_theta * cos_theta);
     double refraction_ratio = rec.front_face ? (1.0 / index_of_refraction_) : index_of_refraction_;
     bool cannot_refract = refraction_ratio * sin_theta > 1.0;
 
-    vec3 direction;
+    Vec3 direction;
     if (cannot_refract || Reflectance(cos_theta, refraction_ratio) > RandomDouble()) {
-      direction = reflect(unit_direction, rec.normal);
+      direction = Reflect(unit_direction, rec.normal);
     }
     else {
-      direction = refract(unit_direction, rec.normal, refraction_ratio);
+      direction = Refract(unit_direction, rec.normal, refraction_ratio);
     }
 
     out_scattered_ray = ray(rec.p, direction);
-    out_ray_attenuation = color(1.0, 1.0, 1.0);
+    out_ray_attenuation = Color(1.0, 1.0, 1.0);
 
     return true;
   }

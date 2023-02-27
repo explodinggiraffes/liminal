@@ -7,13 +7,13 @@
 
 struct hit_record {
   std::shared_ptr<Material> mat_ptr;
-  point3 p;
-  vec3 normal;
+  Point3 p;
+  Vec3 normal;
   double t = 0.0;
   bool front_face = true;
 
-  inline void set_face_normal(const ray& r, const vec3& outward_normal) {
-    front_face = dot(r.direction(), outward_normal) < 0;
+  inline void set_face_normal(const ray& r, const Vec3& outward_normal) {
+    front_face = DotProduct(r.direction(), outward_normal) < 0;
     normal = front_face ? outward_normal : -outward_normal;
   }
 };

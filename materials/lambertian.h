@@ -15,15 +15,15 @@ public:
    *
    * \param albedo: proportion of light reflected away from a surface.
    */
-  Lambertian(const color& albedo) : albedo_(albedo) { }
+  Lambertian(const Color& albedo) : albedo_(albedo) { }
 
   bool Scatter(
       const ray& r_in,
       const hit_record& rec,
-      color& out_ray_attenuation,
+      Color& out_ray_attenuation,
       ray& out_scattered_ray) const override {
-    auto scatter_direction = rec.normal + random_unit_vector();
-    if (scatter_direction.near_zero()) {
+    auto scatter_direction = rec.normal + make_vec3::RandomUnitVector();
+    if (scatter_direction.IsNearZero()) {
       scatter_direction = rec.normal;
     }
 
@@ -34,5 +34,5 @@ public:
   }
 
 private:
-  color albedo_;
+  Color albedo_;
 };
