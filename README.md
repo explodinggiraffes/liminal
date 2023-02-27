@@ -12,9 +12,12 @@ While I love the series... the coding style is not for me. I've been updating th
 - `HitRecord` and `Hitable`
 - `Sphere`, including moving it to a shapes directory
 - Making `SceneBuilder` more flexible; currently it can only build two scenes
+- Passing around `std::shared_ptr`; it's possible functionality that creates these pointers can be internalized, such as within `SceneBuilder`
 - Moving hardcoded values from Liminal.cpp to a properties class; ideally values would be coming from a config file
 
 ### Long term roadmap
 
 - Concurrency
 - UI, perhaps with being able to watch Liminal as it renders a scene
+
+... or perhaps replacing this version of Liminal with one based on [pbrt](https://github.com/mmp/pbrt-v3) from [Physically Based Rendering](https://www.pbr-book.org/).
