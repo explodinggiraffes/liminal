@@ -19,10 +19,10 @@ public:
   Dielectric(double index_of_refraction) : index_of_refraction_(index_of_refraction) { }
 
   bool Scatter(
-      const ray& r_in,
+      const Ray& r_in,
       const hit_record& rec,
       Color& out_ray_attenuation,
-      ray& out_scattered_ray) const override {
+      Ray& out_scattered_ray) const override {
     Vec3 unit_direction = make_vec3::UnitVector(r_in.direction());
     double cos_theta = std::fmin(DotProduct(-unit_direction, rec.normal), 1.0);
     double sin_theta = std::sqrt(1.0 - cos_theta * cos_theta);
@@ -37,7 +37,7 @@ public:
       direction = Refract(unit_direction, rec.normal, refraction_ratio);
     }
 
-    out_scattered_ray = ray(rec.p, direction);
+    out_scattered_ray = Ray(rec.p, direction);
     out_ray_attenuation = Color(1.0, 1.0, 1.0);
 
     return true;

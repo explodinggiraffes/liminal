@@ -22,7 +22,7 @@ const int samples_per_pixel = 50;
 //const int max_depth = 50;
 const int max_depth = 5;
 
-double hit_sphere(const Point3& center, double radius, const ray& r) {
+double hit_sphere(const Point3& center, double radius, const Ray& r) {
   Vec3 oc = r.origin() - center;
   auto a = r.direction().LengthSquared();
   auto half_b = DotProduct(oc, r.direction());
@@ -36,7 +36,7 @@ double hit_sphere(const Point3& center, double radius, const ray& r) {
   }
 }
 
-Color ray_color(const ray& r, const hittable& world, int depth) {
+Color ray_color(const Ray& r, const hittable& world, int depth) {
   hit_record rec;
 
   // If we've exceeded the ray bounce limit, no more light is gathered.
@@ -45,7 +45,7 @@ Color ray_color(const ray& r, const hittable& world, int depth) {
   }
 
   if (world.hit(r, MIN_T, MAX_T, rec)) {
-    ray scattered;
+    Ray scattered;
     Color attenuation;
     if (rec.mat_ptr->Scatter(r, rec, attenuation, scattered)) {
       return attenuation * ray_color(scattered, world, depth - 1);
@@ -101,7 +101,7 @@ int main() {
       for (int s = 0; s < samples_per_pixel; ++s) {
         auto u = (i + RandomDouble()) / (image_width - 1);
         auto v = (j + RandomDouble()) / (image_height - 1);
-        ray r = cam.get_ray(u, v);
+        Ray r = cam.get_ray(u, v);
         pixel_color += ray_color(r, scene, max_depth);
       }
       WriteColorToStream(image_file, pixel_color, samples_per_pixel);

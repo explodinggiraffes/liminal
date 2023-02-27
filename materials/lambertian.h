@@ -18,16 +18,16 @@ public:
   Lambertian(const Color& albedo) : albedo_(albedo) { }
 
   bool Scatter(
-      const ray& r_in,
+      const Ray& r_in,
       const hit_record& rec,
       Color& out_ray_attenuation,
-      ray& out_scattered_ray) const override {
+      Ray& out_scattered_ray) const override {
     auto scatter_direction = rec.normal + make_vec3::RandomUnitVector();
     if (scatter_direction.IsNearZero()) {
       scatter_direction = rec.normal;
     }
 
-    out_scattered_ray = ray(rec.p, scatter_direction);
+    out_scattered_ray = Ray(rec.p, scatter_direction);
     out_ray_attenuation = albedo_;
 
     return true;
