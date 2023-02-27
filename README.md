@@ -1,7 +1,7 @@
 Liminal
 =====
 
-Liminal is a path tracer based on Peter Shirley's [Ray Tracing in One Weekend](https://raytracing.github.io/) series of books. Liminal is currently implementing the first book in its entirety.
+Liminal is a path tracer based on Peter Shirley's [Ray Tracing in One Weekend](https://raytracing.github.io/) series of books. Liminal currently implements the first book in its entirety.
 
 ![Liminal screenshot](README-RTOWBookCover.png)
 
