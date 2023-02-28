@@ -80,7 +80,7 @@ int main() {
   auto dist_to_focus = 10.0;
   auto aperture = 0.1;
 
-  camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
+  Camera cam(lookfrom, lookat, vup, 20, aspect_ratio, aperture, dist_to_focus);
 
   // File
 
@@ -101,7 +101,7 @@ int main() {
       for (int s = 0; s < samples_per_pixel; ++s) {
         auto u = (i + RandomDouble()) / (image_width - 1);
         auto v = (j + RandomDouble()) / (image_height - 1);
-        Ray r = cam.get_ray(u, v);
+        Ray r = cam.CalculateRay(u, v);
         pixel_color += ray_color(r, scene, max_depth);
       }
       WriteColorToStream(image_file, pixel_color, samples_per_pixel);
