@@ -39,7 +39,7 @@ public:
     return *this;
   }
 
-  // Returns true if the vector is close to zero in all dimensions.
+  /* Returns true if the vector is close to zero in all dimensions. */
   bool IsNearZero() const {
     const auto s = 1e-8;
     return (std::fabs(component[0]) < s) && (std::fabs(component[1]) < s) && (std::fabs(component[2]) < s);
@@ -122,11 +122,11 @@ inline Vec3 Refract(const Vec3& uv, const Vec3& n, double etai_over_etat) {
 }
 
 namespace make_vec3 {
-Vec3 UnitVector(Vec3 v) {
+inline Vec3 UnitVector(Vec3 v) {
   return v / v.Length();
 }
 
-Vec3 RandomInUnitSphere() {
+inline Vec3 RandomInUnitSphere() {
   while (true) {
     auto p = Vec3::Random(-1.0, 1.0);
     if (p.LengthSquared() >= 1) continue;
@@ -134,7 +134,7 @@ Vec3 RandomInUnitSphere() {
   }
 }
 
-Vec3 RandomInUnitDisk() {
+inline Vec3 RandomInUnitDisk() {
   while (true) {
     auto p = Vec3(RandomDouble(-1.0, 1.0), RandomDouble(-1.0, 1.0), 0.0);
     if (p.LengthSquared() >= 1) continue;
@@ -142,7 +142,7 @@ Vec3 RandomInUnitDisk() {
   }
 }
 
-Vec3 RandomUnitVector() {
+inline Vec3 RandomUnitVector() {
   return UnitVector(RandomInUnitSphere());
 }
 }
