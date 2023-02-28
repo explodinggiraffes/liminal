@@ -8,9 +8,9 @@ Liminal is a path tracer based on Peter Shirley's [Ray Tracing in One Weekend](h
 ### Short term roadmap
 
 While I love the series... the coding style is not for me. I've been updating the original project to match my own standards. This is a work in progress; some of my next steps will be to update:
-- `Camera`
 - `HitRecord` and `Hitable`
 - `Sphere`, including moving it to a shapes directory
+- Consider splitting the `Material` classes into .h and .cpp files
 - Making `SceneBuilder` more flexible; currently it can only build two scenes
 - Passing around `std::shared_ptr`; it's possible functionality that creates these pointers can be internalized, such as within `SceneBuilder`
 - Moving hardcoded values from Liminal.cpp to a properties class; ideally values would be coming from a config file
