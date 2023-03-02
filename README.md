@@ -1,22 +1,27 @@
 Liminal
 =====
 
-Liminal is a path tracer based on Peter Shirley's [Ray Tracing in One Weekend](https://raytracing.github.io/) series of books. Liminal currently implements the first book in its entirety.
+Liminal is a path tracer based on Peter Shirley's [Ray Tracing in One Weekend](https://raytracing.github.io/) series of books. Liminal currently implements the [first book](https://raytracing.github.io/books/RayTracingInOneWeekend.html) in its entirety.
 
 ![Liminal screenshot](README-RTOWBookCover.png)
 
-### Short term roadmap
+### Coding style
 
-While I love the series... the coding style is not for me. I've been updating the original project to match my own standards. This is a work in progress; some of my next steps will be to update:
-- `HitRecord` and `Hitable`
-- `Sphere`, including moving it to a shapes directory
+I love this series of books! But the coding style is not for me. Before I move on to the [second book](https://raytracing.github.io/books/RayTracingTheNextWeek.html) I am doing a major refactor -- see the "roadmap" sections below.
+
+(If you are here to get an idea for what my coding style is, please see [Skofnung](https://github.com/explodinggiraffes/skofnung) and [Exploding Giraffes](https://github.com/explodinggiraffes/exploding-giraffe-imgui)).
+
+ #### Short term roadmap
+
+- Update `HitRecord` and `Hitable`
+- Update `Sphere`, including moving it to a `shapes`directory
 - Consider splitting the `Material` classes into `.h` and `.cpp` files
 - Making `SceneBuilder` more flexible; currently it can only build two scenes
 - Passing around `std::shared_ptr`; it's possible functionality that creates these pointers can be internalized, such as within `SceneBuilder`
 - Moving hardcoded values from `Liminal.cpp` to a properties class; ideally values would be coming from a config file
 - Try and break the dependency between `hitable.h` and `material.h`
 
-### Long term roadmap
+#### Long term roadmap
 
 - Concurrency
 - UI, perhaps with being able to watch Liminal as it renders a scene
