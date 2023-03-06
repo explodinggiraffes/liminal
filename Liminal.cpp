@@ -68,7 +68,7 @@ int main() {
 
   // The scene
 
-  hittable_list scene;
+  HittableObjects scene;
   SceneBuilder::RTOWBookCover(scene);
 
   // Camera

@@ -5,10 +5,10 @@
 #include <memory>
 #include <vector>
 
-class hittable_list : public Hittable {
+class HittableObjects : public Hittable {
 public:
-  hittable_list() {}
-  hittable_list(std::shared_ptr<Hittable> object) { add(object); }
+  HittableObjects() {}
+  HittableObjects(std::shared_ptr<Hittable> object) { add(object); }
 
   void clear() { objects.clear(); }
   void add(std::shared_ptr<Hittable> object) { objects.push_back(object); }
@@ -18,7 +18,7 @@ public:
   std::vector<std::shared_ptr<Hittable>> objects;
 };
 
-bool hittable_list::hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const {
+bool HittableObjects::hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const {
   HittableProperties temp_properties;
   bool hit_anything = false;
   auto closest_so_far = t_max;
