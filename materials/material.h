@@ -21,5 +21,5 @@ public:
     Color& out_ray_attenuation,
     Ray& out_scattered_ray) const = 0;
 
-  virtual ~Material() { }
+  virtual ~Material() = default;
 };
