@@ -5,7 +5,7 @@
 #include "ray.h"
 #include "materials/material.h"
 
-struct hit_record {
+struct HittableProperties {
   std::shared_ptr<Material> mat_ptr;
   Point3 p;
   Vec3 normal;
@@ -18,7 +18,7 @@ struct hit_record {
   }
 };
 
-class hittable {
+class Hittable {
 public:
-  virtual bool hit(const Ray& r, double t_min, double t_max, hit_record& rec) const = 0;
+  virtual bool hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const = 0;
 };

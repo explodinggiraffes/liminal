@@ -3,7 +3,7 @@
 #include "ray.h"
 #include "vec3.h"
 
-struct hit_record;
+struct HittableProperties;
 
 /* ------------------------------------------------------------------------------------------------------------------
  * Base class used by materials.
@@ -17,7 +17,7 @@ public:
    */
   virtual bool Scatter(
     const Ray& r_in,
-    const hit_record& rec,
+    const HittableProperties& properties,
     Color& out_ray_attenuation,
     Ray& out_scattered_ray) const = 0;
 

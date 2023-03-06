@@ -36,18 +36,18 @@ double hit_sphere(const Point3& center, double radius, const Ray& r) {
   }
 }
 
-Color ray_color(const Ray& r, const hittable& world, int depth) {
-  hit_record rec;
+Color ray_color(const Ray& r, const Hittable& world, int depth) {
+  HittableProperties properties;
 
   // If we've exceeded the ray bounce limit, no more light is gathered.
   if (depth <= 0) {
     return Color(0, 0, 0);
   }
 
-  if (world.hit(r, MIN_T, MAX_T, rec)) {
+  if (world.hit(r, MIN_T, MAX_T, properties)) {
     Ray scattered;
     Color attenuation;
-    if (rec.mat_ptr->Scatter(r, rec, attenuation, scattered)) {
+    if (properties.mat_ptr->Scatter(r, properties, attenuation, scattered)) {
       return attenuation * ray_color(scattered, world, depth - 1);
     }
     return Color(0, 0, 0);

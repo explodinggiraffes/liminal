@@ -19,15 +19,15 @@ public:
 
   bool Scatter(
       const Ray& r_in,
-      const hit_record& rec,
+      const HittableProperties& properties,
       Color& out_ray_attenuation,
       Ray& out_scattered_ray) const override {
-    auto scatter_direction = rec.normal + make_vec3::RandomUnitVector();
+    auto scatter_direction = properties.normal + make_vec3::RandomUnitVector();
     if (scatter_direction.IsNearZero()) {
-      scatter_direction = rec.normal;
+      scatter_direction = properties.normal;
     }
 
-    out_scattered_ray = Ray(rec.p, scatter_direction);
+    out_scattered_ray = Ray(properties.p, scatter_direction);
     out_ray_attenuation = albedo_;
 
     return true;
