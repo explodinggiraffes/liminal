@@ -133,6 +133,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="hittable_objects.cpp" />
     <ClCompile Include="Liminal.cpp" />
   </ItemGroup>
   <ItemGroup>
