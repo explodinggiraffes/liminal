@@ -11,14 +11,14 @@ public:
   sphere() { }
   sphere(Point3 cen, double r, std::shared_ptr<Material> m) : center(cen), radius(r), mat_ptr(m) { };
 
-  virtual bool hit(const Ray& r, double t_min, double t_max, HittableProperties& rec) const override;
+  virtual bool Hit(const Ray& r, double t_min, double t_max, HittableProperties& rec) const override;
 
   std::shared_ptr<Material> mat_ptr;
   Point3 center;
   double radius = 0.0;
 };
 
-bool sphere::hit(const Ray& r, double t_min, double t_max, HittableProperties& rec) const {
+bool sphere::Hit(const Ray& r, double t_min, double t_max, HittableProperties& rec) const {
   Vec3 oc = r.origin() - center;
   auto a = r.direction().LengthSquared();
   auto half_b = DotProduct(oc, r.direction());

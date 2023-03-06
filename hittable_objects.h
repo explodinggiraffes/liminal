@@ -7,29 +7,30 @@
 
 class HittableObjects : public Hittable {
 public:
-  HittableObjects() {}
-  HittableObjects(std::shared_ptr<Hittable> object) { add(object); }
+  HittableObjects() { }
 
-  void clear() { objects.clear(); }
-  void add(std::shared_ptr<Hittable> object) { objects.push_back(object); }
+  void Add(std::shared_ptr<Hittable> hittable) { hittable_objects_.push_back(hittable); }
 
-  bool hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const override;
+  void Clear() { hittable_objects_.clear(); }
 
-  std::vector<std::shared_ptr<Hittable>> objects;
+  bool Hit(const Ray& ray, double t_min, double t_max, HittableProperties& properties) const override;
+
+private:
+  std::vector<std::shared_ptr<Hittable>> hittable_objects_;
 };
 
-bool HittableObjects::hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const {
+bool HittableObjects::Hit(const Ray& ray, double t_min, double t_max, HittableProperties& properties) const {
   HittableProperties temp_properties;
-  bool hit_anything = false;
+  bool did_hit = false;
   auto closest_so_far = t_max;
 
-  for (const auto& object : objects) {
-    if (object->hit(r, t_min, closest_so_far, temp_properties)) {
-      hit_anything = true;
+  for (const auto& hittable : hittable_objects_) {
+    if (hittable->Hit(ray, t_min, closest_so_far, temp_properties)) {
+      did_hit = true;
       closest_so_far = temp_properties.t;
       properties = temp_properties;
     }
   }
 
-  return hit_anything;
+  return did_hit;
 }

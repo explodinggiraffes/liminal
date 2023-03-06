@@ -20,5 +20,5 @@ struct HittableProperties {
 
 class Hittable {
 public:
-  virtual bool hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const = 0;
+  virtual bool Hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const = 0;
 };
