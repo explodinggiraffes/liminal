@@ -4,7 +4,7 @@
 
 #include "camera.h"
 #include "hittable.h"
-#include "hittable_list.h"
+#include "hittable_objects.h"
 #include "ray.h"
 #include "scene_builder.h"
 #include "sphere.h"

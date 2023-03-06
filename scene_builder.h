@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "hittable_list.h"
+#include "hittable_objects.h"
 #include "sphere.h"
 #include "materials/dielectric.h"
 #include "materials/lambertian.h"

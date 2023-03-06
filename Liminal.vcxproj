@@ -141,7 +141,7 @@
     <ClInclude Include="util\color.h" />
     <ClInclude Include="materials\dielectric.h" />
     <ClInclude Include="hittable.h" />
-    <ClInclude Include="hittable_list.h" />
+    <ClInclude Include="hittable_objects.h" />
     <ClInclude Include="materials\lambertian.h" />
     <ClInclude Include="materials\material.h" />
     <ClInclude Include="util\math.h" />

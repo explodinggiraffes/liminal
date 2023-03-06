@@ -38,7 +38,7 @@
     <ClInclude Include="sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="hittable_list.h">
+    <ClInclude Include="hittable_objects.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="util\math.h">
