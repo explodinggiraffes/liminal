@@ -12,8 +12,8 @@ struct HittableProperties {
   double t = 0.0;
   bool front_face = true;
 
-  inline void set_face_normal(const Ray& r, const Vec3& outward_normal) {
-    front_face = DotProduct(r.direction(), outward_normal) < 0;
+  inline void SetFaceNormal(const Ray& ray, const Vec3& outward_normal) {
+    front_face = DotProduct(ray.direction(), outward_normal) < 0;
     normal = front_face ? outward_normal : -outward_normal;
   }
 };

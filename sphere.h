@@ -39,7 +39,7 @@ bool sphere::Hit(const Ray& r, double t_min, double t_max, HittableProperties& r
   rec.t = root;
   rec.p = r.at(rec.t);
   Vec3 outward_normal = (rec.p - center) / radius;
-  rec.set_face_normal(r, outward_normal);
+  rec.SetFaceNormal(r, outward_normal);
   rec.mat_ptr = mat_ptr;
 
   return true;
