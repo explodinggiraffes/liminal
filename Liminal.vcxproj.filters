@@ -24,7 +24,7 @@
     <ClCompile Include="hittable_objects.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sphere.cpp">
+    <ClCompile Include="shapes\sphere.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="hittable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="sphere.h">
+    <ClInclude Include="shapes\sphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="hittable_objects.h">

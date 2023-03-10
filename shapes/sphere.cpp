@@ -2,10 +2,10 @@
 
 #include <cmath>
 
-bool Sphere::Hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const {
-  Vec3 oc = r.origin() - center_;
-  auto a = r.direction().LengthSquared();
-  auto half_b = DotProduct(oc, r.direction());
+bool Sphere::Hit(const Ray& ray, double t_min, double t_max, HittableProperties& properties) const {
+  Vec3 oc = ray.origin() - center_;
+  auto a = ray.direction().LengthSquared();
+  auto half_b = DotProduct(oc, ray.direction());
   auto c = oc.LengthSquared() - radius_ * radius_;
 
   auto discriminant = half_b * half_b - a * c;
@@ -21,9 +21,9 @@ bool Sphere::Hit(const Ray& r, double t_min, double t_max, HittableProperties& p
   }
 
   properties.t = root;
-  properties.p = r.at(properties.t);
+  properties.p = ray.at(properties.t);
   Vec3 outward_normal = (properties.p - center_) / radius_;
-  properties.SetFaceNormal(r, outward_normal);
+  properties.SetFaceNormal(ray, outward_normal);
   properties.mat_ptr = material_;
 
   return true;

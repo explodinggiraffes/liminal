@@ -7,8 +7,8 @@
 #include "hittable_objects.h"
 #include "ray.h"
 #include "scene_builder.h"
-#include "sphere.h"
 #include "vec3.h"
+#include "shapes/sphere.h"
 #include "util/color.h"
 #include "util/math.h"
 

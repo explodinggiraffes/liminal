@@ -3,10 +3,10 @@
 #include <memory>
 
 #include "hittable_objects.h"
-#include "sphere.h"
 #include "materials/dielectric.h"
 #include "materials/lambertian.h"
 #include "materials/metal.h"
+#include "shapes/sphere.h"
 
 /* ------------------------------------------------------------------------------------------------------------------
  * Populates a scene with spheres made from different materials.

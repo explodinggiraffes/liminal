@@ -10,7 +10,7 @@ public:
       : center_(center), radius_(radius), material_(material) {
   };
 
-  virtual bool Hit(const Ray& r, double t_min, double t_max, HittableProperties& properties) const override;
+  virtual bool Hit(const Ray& ray, double t_min, double t_max, HittableProperties& properties) const override;
 
 private:
   std::shared_ptr<Material> material_;

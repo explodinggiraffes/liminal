@@ -135,7 +135,7 @@
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="hittable_objects.cpp" />
     <ClCompile Include="Liminal.cpp" />
-    <ClCompile Include="sphere.cpp" />
+    <ClCompile Include="shapes\sphere.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="camera.h" />
@@ -149,7 +149,7 @@
     <ClInclude Include="util\math.h" />
     <ClInclude Include="materials\metal.h" />
     <ClInclude Include="ray.h" />
-    <ClInclude Include="sphere.h" />
+    <ClInclude Include="shapes\sphere.h" />
     <ClInclude Include="vec3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
