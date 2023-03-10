@@ -13,7 +13,6 @@ I love this series of books! But the coding style is not for me. Before I move o
 
  #### Short term roadmap
 
-- Update `Sphere`, including moving it to a `shapes`directory
 - Consider splitting the `Material` classes into `.h` and `.cpp` files
 - Making `SceneBuilder` more flexible; currently it can only build two scenes
 - Passing around `std::shared_ptr`; it's possible functionality that creates these pointers can be internalized, such as within `SceneBuilder`
