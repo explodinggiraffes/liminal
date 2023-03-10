@@ -47,7 +47,7 @@ Color ray_color(const Ray& r, const Hittable& world, int depth) {
   if (world.Hit(r, MIN_T, MAX_T, properties)) {
     Ray scattered;
     Color attenuation;
-    if (properties.mat_ptr->Scatter(r, properties, attenuation, scattered)) {
+    if (properties.material->Scatter(r, properties, attenuation, scattered)) {
       return attenuation * ray_color(scattered, world, depth - 1);
     }
     return Color(0, 0, 0);

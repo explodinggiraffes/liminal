@@ -24,7 +24,7 @@ bool Sphere::Hit(const Ray& ray, double t_min, double t_max, HittableProperties&
   properties.p = ray.at(properties.t);
   Vec3 outward_normal = (properties.p - center_) / radius_;
   properties.SetFaceNormal(ray, outward_normal);
-  properties.mat_ptr = material_;
+  properties.material = material_;
 
   return true;
 }
