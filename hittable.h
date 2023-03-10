@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "ray.h"
+#include "vec3.h"
 #include "materials/material.h"
 
 struct HittableProperties {

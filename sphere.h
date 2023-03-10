@@ -4,7 +4,6 @@
 #include <memory>
 
 #include "hittable.h"
-#include "vec3.h"
 
 class Sphere : public Hittable {
 public:
