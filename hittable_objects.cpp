@@ -1,7 +1,9 @@
 #include "hittable_objects.h"
 
-void HittableObjects::Add(std::shared_ptr<Hittable> hittable) {
-  hittable_objects_.push_back(hittable);
+#include <utility>
+
+void HittableObjects::Add(std::unique_ptr<Hittable> hittable) {
+  hittable_objects_.push_back(std::move(hittable));
 }
 
 void HittableObjects::Clear() {
