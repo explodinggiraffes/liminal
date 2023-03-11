@@ -36,7 +36,7 @@ double hit_sphere(const Point3& center, double radius, const Ray& r) {
   }
 }
 
-Color ray_color(const Ray& r, const Hittable& world, int depth) {
+Color ray_color(const Ray& r, const HittableObjects& world, int depth) {
   HittableProperties properties;
 
   // If we've exceeded the ray bounce limit, no more light is gathered.
