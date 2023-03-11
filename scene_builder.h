@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "hittable_objects.h"
+#include "scene.h"
 #include "materials/dielectric.h"
 #include "materials/lambertian.h"
 #include "materials/metal.h"
@@ -16,7 +16,7 @@ public:
   /**
    * Creates a scene for Image 20 from "Ray Tracing in One Weekend".
    */ 
-  static void RTOWImage20(HittableObjects& out_scene) {
+  static void RTOWImage20(Scene& out_scene) {
     auto material_ground = std::make_shared<Lambertian>(Color(0.8, 0.8, 0.0));
 
     auto material_left_sphere = std::make_shared<Dielectric>(1.5);
@@ -33,7 +33,7 @@ public:
   /**
    * Creates a scene for the book cover image from "Ray Tracing in One Weekend".
    */
-  static void RTOWBookCover(HittableObjects& out_scene) {
+  static void RTOWBookCover(Scene& out_scene) {
     auto ground_material = std::make_shared<Lambertian>(Color(0.5, 0.5, 0.5));
     out_scene.Add(std::make_unique<Sphere>(Point3(0, -1000, 0), 1000, ground_material));
 

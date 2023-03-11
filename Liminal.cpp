@@ -4,8 +4,8 @@
 
 #include "camera.h"
 #include "hittable.h"
-#include "hittable_objects.h"
 #include "ray.h"
+#include "scene.h"
 #include "scene_builder.h"
 #include "vec3.h"
 #include "shapes/sphere.h"
@@ -36,7 +36,7 @@ double hit_sphere(const Point3& center, double radius, const Ray& r) {
   }
 }
 
-Color ray_color(const Ray& r, const HittableObjects& world, int depth) {
+Color ray_color(const Ray& r, const Scene& scene, int depth) {
   HittableProperties properties;
 
   // If we've exceeded the ray bounce limit, no more light is gathered.
@@ -44,11 +44,11 @@ Color ray_color(const Ray& r, const HittableObjects& world, int depth) {
     return Color(0, 0, 0);
   }
 
-  if (world.Hit(r, MIN_T, MAX_T, properties)) {
+  if (scene.Hit(r, MIN_T, MAX_T, properties)) {
     Ray scattered;
     Color attenuation;
     if (properties.material->Scatter(r, properties, attenuation, scattered)) {
-      return attenuation * ray_color(scattered, world, depth - 1);
+      return attenuation * ray_color(scattered, scene, depth - 1);
     }
     return Color(0, 0, 0);
   }
@@ -68,7 +68,7 @@ int main() {
 
   // The scene
 
-  HittableObjects scene;
+  Scene scene;
   SceneBuilder::RTOWBookCover(scene);
 
   // Camera

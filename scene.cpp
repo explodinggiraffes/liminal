@@ -1,16 +1,16 @@
-#include "hittable_objects.h"
+#include "scene.h"
 
 #include <utility>
 
-void HittableObjects::Add(std::unique_ptr<Hittable> hittable) {
+void Scene::Add(std::unique_ptr<Hittable> hittable) {
   hittable_objects_.push_back(std::move(hittable));
 }
 
-void HittableObjects::Clear() {
+void Scene::Clear() {
   hittable_objects_.clear();
 }
 
-bool HittableObjects::Hit(const Ray& ray, double t_min, double t_max, HittableProperties& properties) const {
+bool Scene::Hit(const Ray& ray, double t_min, double t_max, HittableProperties& properties) const {
   HittableProperties temp_properties;
   bool did_hit = false;
   auto closest_so_far = t_max;
