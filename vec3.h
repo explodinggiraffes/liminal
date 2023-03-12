@@ -122,6 +122,7 @@ inline Vec3 Refract(const Vec3& uv, const Vec3& n, double etai_over_etat) {
 }
 
 namespace make_vec3 {
+
 inline Vec3 UnitVector(Vec3 v) {
   return v / v.Length();
 }
@@ -145,4 +146,5 @@ inline Vec3 RandomInUnitDisk() {
 inline Vec3 RandomUnitVector() {
   return UnitVector(RandomInUnitSphere());
 }
+
 }
