@@ -1,9 +1,9 @@
 #pragma once
 
-#include "hittable.h"
-
 #include <memory>
 #include <vector>
+
+#include "hittable.h"
 
 class Scene {
 public:
