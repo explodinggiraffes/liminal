@@ -13,7 +13,6 @@ I love this series of books! But the coding style is not for me. Before I move o
 
  #### Short term roadmap
 
-- Consider splitting the `Material` classes into `.h` and `.cpp` files
 - Making `SceneBuilder` more flexible; currently it can only build two scenes
 - Moving hardcoded values from `Liminal.cpp` to a properties class; ideally values would be coming from a config file
 - Try and break the dependency between `hittable.h` and `material.h`
