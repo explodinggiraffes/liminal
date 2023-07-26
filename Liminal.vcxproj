@@ -133,6 +133,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="materials\dielectric.cpp" />
+    <ClCompile Include="materials\lambertian.cpp" />
+    <ClCompile Include="materials\metal.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="Liminal.cpp" />
     <ClCompile Include="shapes\sphere.cpp" />
